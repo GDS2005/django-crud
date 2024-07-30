@@ -1,6 +1,6 @@
 # CRUD Django Example
 
-#### An example of how to use Django Framework and make a CRUD of Books in Mysql.
+#### An example of how to use the Django Framework to create a CRUD application of Books in MySQL.
 
 ## Start a new Django Project
 
@@ -9,27 +9,27 @@
 pip install django
 ```
 
-2. Create a new project. Remplece "myproject" with your project name. Usually use Uppercase at the start of every string like "BookStore"
+2. Create a new project. Replace "myproject" with your project name. It's common to use uppercase letters at the start of each word, such as "BookStore"
 ```bash
 python -m django startproject myproject
 ```
 
-3. Enter to the folder project
+3. Enter the project folder
 ```bash
 cd myproject
 ```
 
-4. Install Virtualenv. Virtualenv allows you to create isolated Python environments. This is particularly useful for managing dependencies and avoiding conflicts between packages used in different projects.
+4. Install Virtualenv. Virtualenv allows you to create isolated Python environments. This is especially useful for managing dependencies and avoiding conflicts between packages used in different projects.
 ```bash
 pip install virtualenv
 ```
 
-5. Create a Virtual Enviroment. Change "myenv" for the name of your Virtual Enviroment; I usually use the name "venv".
+5. Create a Virtual Environment. Replace "myenv" with the name of your virtual environment. I usually use the name "venv"
 ```bash
 python3 -m venv myenv
 ```
 
-6. Activate the Virtual Enviroment. This depends of your Operative System.
+6. Activate the Virtual Environment. This depends on your operating system.
 - Windows:
 ```bash
 venv\Scripts\activate
@@ -39,32 +39,32 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-7. Now you can install dependencies and it will be isolated. To use it just install a dependencie.
+7. Now you can install dependencies, and they will be isolated. To use it, just install a dependency.
 ```bash
 pip install django
 ```
-then you must use:
+Then you must run:
 ```bash
 pip freeze > requirements.txt
 ```
+With this, you can store all the project dependencies in this file, which is useful for Docker and server deployments.
 
-With this, you will be able to storage all the dependencies of the project in this file that it is usefull in Docker and servers deploys. 
-8. Use deactivate to end the Virtual Enviroment.
+8. Use deactivate to exit the Virtual Environment.
 ```bash
 deactivate
 ```
 
-9. Run the project with:
+9. Run the project by executing:
 ```bash
 python manage.py runserver
 ```
-- The basic project will start at http://127.0.0.1:8000/
+- The basic project will be available at http://127.0.0.1:8000/
 
 <img src="https://github.com/GDS2005/django-crud/blob/main/assets/django-basic.jpg" alt="django-basic Image" width="600"/>
 
 ## Generate CRUD (Create, Read, Update and Delete) of elements
 
-1. First we need to create an app. A Django app is a small library representing a discrete part of a larger project. The app name should be short, all-lowercase, and not include numbers, dashes, periods, spaces, or special characters. It also, in general, should be the plural of an app's main model.
+1. First, we need to create an app. A Django app is a modular component representing a discrete part of a larger project. The app name should be short, all-lowercase, and not include numbers, dashes, periods, spaces, or special characters. It should generally be the plural form of an app's main model.
 ```bash
 python3 manage.py startapp appname
 ```
@@ -82,7 +82,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-3. Define the Model. In `appname/models.py`, define the model. For example:
+3. Define the model. In appname/models.py, define the model. For example:
 ```bash
 from django.db import models
 
@@ -99,7 +99,7 @@ class Book(models.Model):
             return self.id
 ```
 
-4. Create Forms to manage the CRUD. In `appname`generate a file named forms for the Product model:
+4. Create forms to manage the CRUD. In appname, create a file named forms.py for the Book model
 ```bash
 from django import forms
 from .models import Book
@@ -110,7 +110,7 @@ class BookForm(forms.ModelForm):
         fields = ['title', 'author', 'description', 'price']
 ```
 
-5. In `appname/views.py`, create functions for the CRUD operation, for example:
+5. In appname/views.py, create functions for the CRUD operations, for example:
 ```bash
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Book
@@ -121,7 +121,7 @@ def book_list(request):
     return render(request, 'books/book_list.html', {'books': books})
 ```
 
-6. Create the urls.py file in your app to navigate to define the URL patterns:
+6. Define the URL patterns in a urls.py file within your app:
 ```bash
 from django.urls import path
 from .views import book_list
@@ -131,7 +131,7 @@ urlpatterns = [
 ]   
 ```
 
-7. Include URLs in the main Project. In `myproject/urls.py`, include the app's URLs:
+7. Include the app's URLs in the main project. In myproject/urls.py, add:
 ```bash
 from django.contrib import admin
 from django.urls import path, include
@@ -142,16 +142,16 @@ urlpatterns = [
 ]
 ```
 
-8. Create the template to add html. Create a folder named templates in appname.
+8. Create the template to add HTML content. Create a folder named templates in the app's directory.
 
 ## Configure Database
 
-#### I highly recommend to use Decouple to use Enviroment Variables.
+#### I highly recommend using Decouple to use environment variables.
 
 ```bash
 pip install python-decouple
 ```
-Then, generate a ".env" file and create your variables:
+Then, create a ".env" file and define your variables:
 
 ```bash
 DB_HOST=localhost
@@ -161,7 +161,7 @@ DB_USER=my_user
 DB_PASSWORD=my_password
 ```
 
-Import the decouple dependencie where ever you need it.
+Import the Decouple package wherever you need it.
 
 ```bash
 from decouple import config
@@ -183,7 +183,7 @@ pip install djongo
 pip install psycopg2
 ```
 
-2. Depending of our database, we need to modify the DATABASE configuration in myproject/config.py:
+2. Depending on our database, we need to modify the DATABASE configuration in myproject/config.py:
 
 - Mysql:
 ```bash
@@ -236,15 +236,15 @@ DATABASES = {
 }
 ```
 
-3. Make a migration to generate the database. MAKE SURE THAT THE DATABASE IS CREATED.
+3. Make a migration to apply changes to the database. MAKE SURE THE DATABASE IS CREATED.
 ```bash
 python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-## To clone an practice with this repository
+## How to clone and practice with this repository
 
-1. Clone the repository.
+1. Clone this repository.
 ```bash
 git clone https://github.com/yourusername/your-django-project.git
 ```
@@ -254,7 +254,7 @@ git clone https://github.com/yourusername/your-django-project.git
 pip install -r requirements.txt
 ```
 
-3. Generate the .env file with:
+3. Create the .env file and define the following variables:
 ```bash
 DB_HOST=localhost
 DB_PORT=3306
@@ -265,7 +265,7 @@ DB_PASSWORD=my_password
 
 4. Create the database. 
 
-5. Make a migration to generate the database. 
+5. Run migrations to apply changes to the database.
 ```bash
 python3 manage.py makemigrations
 python3 manage.py migrate
@@ -277,5 +277,5 @@ python manage.py runserver
 ```
 
 ## Contributing
-¡Contributions are more than welcome!
+Contributions are welcome!
 

@@ -1,21 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Book List</title>
-</head>
-<body>
-    <h1>Book List</h1>
-    <a href="{% url 'book_create' %}">Add New Book</a>
-    <ul>
-        {% if books != NULL %}
-            {% for book in books %}
-                <li>
-                    <a href="{% url 'book_detail' pk=book.pk %}">{{ book.title }}</a>
-                    <a href="{% url 'book_update' pk=book.pk %}">Edit</a>
-                    <a href="{% url 'book_delete' pk=book.pk %}">Delete</a>
-                </li>
-            {% endfor %}
-        {% endif %}
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}List{% endblock %}
+
+{% block content %}
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <h1 class="fw-bolder mb-4">Book List</h1>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4">
+                    {% if books != NULL %}
+                        {% for book in books %}
+                            <div class="col mb-5">
+                                <div class="card h-100">
+                                    <!-- Product image-->
+                                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                    <!-- Product details-->
+                                    <div class="card-body p-4">
+                                        <div class="text-center">
+                                            <!-- Product name-->
+                                            <h5 class="fw-bolder">{{book.title}}</h5>
+                                            <!-- Product description-->
+                                            <p >{{book.description}}</p>
+                                            <!-- Product price-->
+                                            <span class="text-muted text-decoration-line-through">{{book.price}}</span>
+                                            $18.00
+                                        </div>
+                                    </div>
+                                    <!-- Product actions-->
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                                        <a class="btn btn-primary mt-auto" href="{% url 'book_detail' pk=book.pk %}">Detail</a>
+                                        <a class="btn btn-warning mt-auto" href="{% url 'book_update' pk=book.pk %}">Edit</a>
+                                        <a class="btn btn-danger mt-auto" href="{% url 'book_delete' pk=book.pk %}">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+        </div>
+    </section>
+{% endblock %}
