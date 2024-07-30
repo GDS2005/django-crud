@@ -60,7 +60,7 @@ python manage.py runserver
 ```
 - The basic project will start at http://127.0.0.1:8000/
 
-<img src="https://github.com/GDS2005/django-crud/blob/main/media/django-basic.jpg" alt="django-basic Image" width="600"/>
+<img src="https://github.com/GDS2005/django-crud/blob/main/assets/django-basic.jpg" alt="django-basic Image" width="600"/>
 
 ## Generate CRUD (Create, Read, Update and Delete) of elements
 
