@@ -60,6 +60,8 @@ python manage.py runserver
 ```
 - The basic project will start at http://127.0.0.1:8000/
 
+<img src="https://github.com/GDS2005/django-crud/blob/main/media/django-basic.jpg" alt="django-basic Image" width="600"/>
+
 ## Generate CRUD (Create, Read, Update and Delete) of elements
 
 1. First we need to create an app. A Django app is a small library representing a discrete part of a larger project. The app name should be short, all-lowercase, and not include numbers, dashes, periods, spaces, or special characters. It also, in general, should be the plural of an app's main model.
@@ -273,3 +275,7 @@ python3 manage.py migrate
 ```bash
 python manage.py runserver
 ```
+
+## Contributing
+¡Contributions are more than welcome!
+
