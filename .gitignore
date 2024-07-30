@@ -1,0 +1,71 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.mo
+*.sqlite3
+
+# Local environment
+.env
+
+# Database
+db.sqlite3
+*.sqlite3
+
+# Media
+/media/
+
+# Static files
+/staticfiles/
+/static/
+
+# Django migrations
+**/migrations/**
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# Ignore coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Ignore deployment environment
+*.env
+*.local
+*.production
+*.settings
+
+# Ignore secrets
+secrets.json
+
+# Ignore the node_modules directory in case of frontend dependencies
+node_modules/
+
+# Ignore build and distribution files
+build/
+dist/
+*.egg-info/
+*.egg
